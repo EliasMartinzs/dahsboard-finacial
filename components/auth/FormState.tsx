@@ -11,7 +11,7 @@ export function FormState({ className, message, icon }: FormStateProps) {
   return (
     <div
       className={cn(
-        "h-10 text-start flex-center gap-x-2 rounded-full",
+        "h-10 text-center flex-center gap-x-2 rounded-full px-4",
         className
       )}
     >

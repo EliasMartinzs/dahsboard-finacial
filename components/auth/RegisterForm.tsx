@@ -17,13 +17,15 @@ import { Input } from "@/components/ui/input";
 import { RegisterSchema } from "@/schemas";
 import { FormWrapper } from "./FormWrapper";
 import { FormState } from "./FormState";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { CiWarning } from "react-icons/ci";
 import { BsCheck } from "react-icons/bs";
+import { register } from "@/actions/register";
 
 export function RegisterForm() {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
+  const [isPending, startTransition] = useTransition();
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
@@ -35,19 +37,25 @@ export function RegisterForm() {
   });
 
   async function onSubmit(values: z.infer<typeof RegisterSchema>) {
-    console.log(values);
+    startTransition(() => {
+      register(values).then((data) => {
+        setError(data?.error);
+        setSuccess(data?.success);
+
+        form.reset();
+      });
+    });
   }
 
   return (
     <Form {...form}>
       <FormWrapper
-        social
         title="Cadastrar-se"
         description="Faça um cadastro para ter acesso a plataform!"
         textRedirect="Já tem um conta? Faça login!"
         redirect="/auth/login"
       >
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 w-96">
           <FormField
             control={form.control}
             name="name"
@@ -56,9 +64,10 @@ export function RegisterForm() {
                 <FormLabel>Nome</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="jonhdoe@gmail.com"
+                    placeholder="Jonh Doe"
                     className="form-outline"
                     {...field}
+                    disabled={isPending}
                   />
                 </FormControl>
                 <FormMessage />
@@ -77,6 +86,7 @@ export function RegisterForm() {
                     type="email"
                     className="form-outline"
                     {...field}
+                    disabled={isPending}
                   />
                 </FormControl>
                 <FormMessage />
@@ -94,6 +104,7 @@ export function RegisterForm() {
                     placeholder="******"
                     type="password"
                     className="form-outline"
+                    disabled={isPending}
                     {...field}
                   />
                 </FormControl>
@@ -103,7 +114,7 @@ export function RegisterForm() {
           />
           {error && (
             <FormState
-              icon={<CiWarning className="text-xl" />}
+              icon={<CiWarning className="text-2xl" />}
               message={error}
               className="bg-danger-500 font-bold text-white"
             />
@@ -115,8 +126,14 @@ export function RegisterForm() {
               className="bg-success-500 font-bold text-white"
             />
           )}
-          <Button type="submit" size="full" rounded="full" variant="default">
-            Login
+          <Button
+            type="submit"
+            size="full"
+            rounded="full"
+            variant="default"
+            disabled={isPending}
+          >
+            Criar conta
           </Button>
         </form>
       </FormWrapper>

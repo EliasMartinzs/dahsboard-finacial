@@ -18,13 +18,15 @@ import { LoginSchema } from "@/schemas";
 import { FormWrapper } from "./FormWrapper";
 import { FormState } from "./FormState";
 import { Check } from "lucide-react";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { CiWarning } from "react-icons/ci";
 import { BsCheck } from "react-icons/bs";
+import { login } from "@/actions/login";
 
 export function LoginForm() {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
+  const [isPending, startTransition] = useTransition();
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
@@ -35,7 +37,12 @@ export function LoginForm() {
   });
 
   async function onSubmit(values: z.infer<typeof LoginSchema>) {
-    console.log(values);
+    startTransition(() => {
+      login(values).then((data) => {
+        setError(data?.error);
+        setSuccess(data?.success);
+      });
+    });
   }
 
   return (
@@ -47,7 +54,10 @@ export function LoginForm() {
         textRedirect="Não tem um conta? Cadastre-se"
         redirect="/auth/register"
       >
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-5 w-full lg:w-96"
+        >
           <FormField
             control={form.control}
             name="email"
@@ -59,6 +69,7 @@ export function LoginForm() {
                     placeholder="jonhdoe@gmail.com"
                     className="form-outline"
                     type="email"
+                    disabled={isPending}
                     {...field}
                   />
                 </FormControl>
@@ -77,6 +88,7 @@ export function LoginForm() {
                     placeholder="******"
                     type="password"
                     className="form-outline"
+                    disabled={isPending}
                     {...field}
                   />
                 </FormControl>
@@ -98,7 +110,13 @@ export function LoginForm() {
               className="bg-success-500 font-bold text-white"
             />
           )}
-          <Button type="submit" size="full" rounded="full" variant="default">
+          <Button
+            type="submit"
+            size="full"
+            rounded="full"
+            variant="default"
+            disabled={isPending}
+          >
             Login
           </Button>
         </form>

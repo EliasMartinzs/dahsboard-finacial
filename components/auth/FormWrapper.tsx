@@ -12,7 +12,7 @@ interface FormWrapperProps {
   children: React.ReactNode;
   title: string;
   description?: string;
-  social: boolean;
+  social?: boolean;
   textRedirect: string;
   redirect: string;
 }
@@ -26,12 +26,14 @@ export function FormWrapper({
   textRedirect,
 }: FormWrapperProps) {
   return (
-    <Card className="border-primary-500">
+    <Card className="shadow-md border-none max-lg:backdrop-blur-md max-lg:text-black/60">
       <CardHeader>
-        <CardTitle className="text-center text-lg lg:text-2xl">
+        <CardTitle className="text-center text-2xl lg:text-3xl">
           {title}
         </CardTitle>
-        <CardDescription>{description}</CardDescription>
+        <CardDescription className="text-center max-lg:text-black/60">
+          {description}
+        </CardDescription>
       </CardHeader>
       <CardContent className="space-y-5">
         {children}
