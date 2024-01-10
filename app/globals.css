@@ -3,9 +3,34 @@
 @tailwind utilities;
 
 *,
-body,
-html {
+html,
+body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.background-gradient {
+  background-color: #2b4162;
+  background-image: linear-gradient(315deg, #2b4162 0%, #12100e 74%);
+}
+
+.background-gradient-mobile {
+  @apply bg-gradient-to-br from-blue-900 to-gray-900 lg:bg-white lg:from-white lg:to-white;
+}
+
+.spinner {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><radialGradient id="a3" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stop-color="%23000000"></stop><stop offset=".3" stop-color="%23000000" stop-opacity=".9"></stop><stop offset=".6" stop-color="%23000000" stop-opacity=".6"></stop><stop offset=".8" stop-color="%23000000" stop-opacity=".3"></stop><stop offset="1" stop-color="%23000000" stop-opacity="0"></stop></radialGradient><circle transform-origin="center" fill="none" stroke="url(%23a3)" stroke-width="15" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transform-origin="center" fill="none" opacity=".2" stroke="%23000000" stroke-width="15" stroke-linecap="round" cx="100" cy="100" r="70"></circle></svg>');
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-start {
+  @apply flex items-start justify-center;
+}
+
+.form-outline {
+  @apply outline-none border border-borderColor rounded-full px-4 py-5 focus:border-primary-500 transition-all;
 }
