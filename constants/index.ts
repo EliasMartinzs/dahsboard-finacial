@@ -1,8 +1,9 @@
 import { IoHomeOutline } from "react-icons/io5";
 import { BsInfoSquare } from "react-icons/bs";
-import { CiStar } from "react-icons/ci";
+import { CiStar, CiSettings, CiCalendar } from "react-icons/ci";
 import { TiContacts } from "react-icons/ti";
-import { KanbanSquare } from "lucide-react";
+import { LuKanbanSquare } from "react-icons/lu";
+
 import {
   MdRestaurant,
   MdDirectionsBus,
@@ -30,7 +31,6 @@ import {
   MdBeachAccess,
   MdNaturePeople,
 } from "react-icons/md";
-import { StatusProps } from "@/types";
 
 const linksHeaderLanding = [
   {
@@ -57,12 +57,23 @@ const linksHeaderLanding = [
 
 const linksHeaderDashboard = [
   {
-    icon: KanbanSquare,
+    icon: LuKanbanSquare,
     href: "/dashboard",
+    label: "Dashboard",
+  },
+  {
+    icon: CiSettings,
+    href: "/settings",
+    label: "Configurações",
+  },
+  {
+    icon: CiCalendar,
+    href: "/settings",
+    label: "Calendario",
   },
 ];
 
-const expenseCategories: StatusProps[] = [
+const expenseCategories = [
   { id: 1, value: "Alimentação", label: MdRestaurant },
   { id: 2, value: "Transporte", label: MdDirectionsBus },
   { id: 3, value: "Moradia", label: MdHome },
@@ -90,4 +101,4 @@ const expenseCategories: StatusProps[] = [
   { id: 25, value: "Natureza", label: MdNaturePeople },
 ];
 
-export { linksHeaderLanding, expenseCategories };
+export { linksHeaderLanding, expenseCategories, linksHeaderDashboard };

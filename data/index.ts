@@ -19,3 +19,19 @@ export const getUserById = async (id: string) => {
     console.log("Falha ao buscar usuario no banco de dados!", error);
   }
 };
+
+export const getCreditCard = async (email: string) => {
+  try {
+    const card = await db.creditCard.findMany({
+      where: {
+        user: {
+          email: email,
+        },
+      },
+    });
+
+    return card;
+  } catch (error: any) {
+    console.log("Error ao fetch cartao de credit", error);
+  }
+};
