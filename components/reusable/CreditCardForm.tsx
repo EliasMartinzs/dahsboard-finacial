@@ -11,9 +11,10 @@ import { Button } from "../ui/button";
 import { FormState } from "../auth/FormState";
 import { createCreditCard } from "@/actions/creditCard";
 import { useState, useTransition } from "react";
-import { NewCreditCardProps } from "@/types";
+import { UserPropsType } from "@/types";
+import Loading from "@/app/loading";
 
-export function CreditCardForm({ user }: NewCreditCardProps) {
+export function CreditCardForm({ user }: UserPropsType) {
   const [isPending, startTransition] = useTransition();
   const [success, setSuccess] = useState<string | undefined>("");
   const [error, setError] = useState<string | undefined>("");
@@ -133,11 +134,10 @@ export function CreditCardForm({ user }: NewCreditCardProps) {
               <FormItem>
                 <Input
                   placeholder="CVC"
-                  type="number"
                   minLength={3}
                   maxLength={3}
                   {...field}
-                  className="rounded-lg bg-white max-w-20 text-black outline-none border focus:border-primary-500"
+                  className="bg-background max-w-20 text-white outline-none border-b dark:border-gray-300/20 focus:border-primary-500"
                   disabled={isPending}
                 />
                 <FormMessage />
@@ -147,17 +147,13 @@ export function CreditCardForm({ user }: NewCreditCardProps) {
         </div>
         <Button
           type="submit"
-          className="border border-primary-500"
+          variant="default"
           rounded="lg"
           size="full"
           disabled={isPending}
         >
           {form.formState.isSubmitSuccessful ? (
-            <FormState
-              icon={<BsCheck className="text-success-500 w-8 h-8" />}
-              message=""
-              className=""
-            />
+            <Loading variant="input" size="sm" />
           ) : (
             <p>Salvar</p>
           )}

@@ -1,3 +1,7 @@
+import { MdDelete } from "react-icons/md";
+import { deleteCreditCard } from "@/actions/creditCard";
+import { DeleteCreditCard } from "../delete/DeleteCreditCard";
+
 interface CreditCardProps {
   card: {
     id: number;
@@ -11,7 +15,11 @@ interface CreditCardProps {
 }
 
 export async function CreditCard({ card }: CreditCardProps) {
-  const { expirationMonth, expirationYear, nameCard, number, cvc } = card;
+  const { expirationMonth, expirationYear, nameCard, number, cvc, id } = card;
+
+  const handleDelete = async () => {
+    await deleteCreditCard(id);
+  };
 
   function spaceNumber(str: string) {
     return str.replace(/(\d{4})/g, "$1 ");
@@ -47,6 +55,7 @@ export async function CreditCard({ card }: CreditCardProps) {
             </div>
             <p>{cvc}</p>
           </div>
+          <DeleteCreditCard id={id} />
         </div>
       </div>
     </div>

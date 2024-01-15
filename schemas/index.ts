@@ -34,9 +34,9 @@ export const CreditCardSchema = z.object({
     .max(16),
   cvc: z
     .string()
-    .min(3, {
-      message:
-        "Oops! Parece que o CVC do cartão está incompleto. Certifique-se de digitar todos os 3 dígitos.",
+    .min(3)
+    .max(3, {
+      message: "Oops! Certifique-se de digitar somente os 3 dígitos.",
     })
     .max(3),
   expirationMonth: z
@@ -45,4 +45,10 @@ export const CreditCardSchema = z.object({
   expirationYear: z
     .string()
     .refine((value) => value !== "", { message: "Selecione o Ano" }),
+});
+
+export const BalanceSchema = z.object({
+  balance: z.string().min(1, {
+    message: "Por favor digitar um número",
+  }),
 });

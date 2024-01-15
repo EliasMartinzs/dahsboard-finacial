@@ -17,7 +17,6 @@ import { Input } from "@/components/ui/input";
 import { LoginSchema } from "@/schemas";
 import { FormWrapper } from "./FormWrapper";
 import { FormState } from "./FormState";
-import { Check } from "lucide-react";
 import { useState, useTransition } from "react";
 import { CiWarning } from "react-icons/ci";
 import { BsCheck } from "react-icons/bs";

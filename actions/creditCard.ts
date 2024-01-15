@@ -41,3 +41,13 @@ export const createCreditCard = async (
     throw error;
   }
 };
+
+export const deleteCreditCard = async (id: number) => {
+  try {
+    await db.creditCard.delete({ where: { id: id } });
+
+    revalidatePath("/dashboard");
+  } catch (error: any) {
+    console.log("falha ao deletar cartao de creditor", error);
+  }
+};

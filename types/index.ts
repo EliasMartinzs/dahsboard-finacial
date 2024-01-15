@@ -1,4 +1,6 @@
-export interface NewCreditCardProps {
+import Decimal from "decimal.js";
+
+export interface UserPropsType {
   user:
     | {
         id: string;
@@ -10,4 +12,14 @@ export interface NewCreditCardProps {
       }
     | null
     | undefined;
+}
+
+export interface User {
+  id: string;
+  name: string | null;
+  email: string | null;
+  emailVerified: Date | null;
+  image: string | null;
+  password: string | null;
+  balance: Decimal | null;
 }
