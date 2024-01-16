@@ -160,7 +160,7 @@ export function ExpenseForm({ user }: UserPropsType) {
               name="currency"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel>Categoria</FormLabel>
+                  <FormLabel>Moeda</FormLabel>
                   <FormControl>
                     <Select
                       onValueChange={field.onChange}

@@ -12,7 +12,7 @@ interface CardsTitle {
 export function CardsTitle({ img, title, alt }: CardsTitle) {
   const { theme } = useTheme();
 
-  const currentTheme = theme ?? "dark";
+  const currentTheme = theme ?? "system";
 
   const imagePath = `/${img}-${currentTheme}.png`;
 
