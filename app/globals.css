@@ -31,6 +31,10 @@ body {
   @apply flex items-start justify-center;
 }
 
+.flex-between {
+  @apply flex items-center justify-between;
+}
+
 .form-outline {
   @apply outline-none border border-borderColor rounded-lg px-4 py-5 focus:border-primary-500 transition-all;
 }

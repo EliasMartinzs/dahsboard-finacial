@@ -1,6 +1,6 @@
 import { IoHomeOutline } from "react-icons/io5";
 import { BsInfoSquare } from "react-icons/bs";
-import { CiStar, CiSettings, CiCalendar } from "react-icons/ci";
+import { CiStar } from "react-icons/ci";
 import { TiContacts } from "react-icons/ti";
 import { LuKanbanSquare } from "react-icons/lu";
 
@@ -15,7 +15,6 @@ import {
   MdAttachMoney,
   MdMusicNote,
   MdLocalMovies,
-  MdPets,
   MdLocalGroceryStore,
   MdFlight,
   MdDirectionsCar,
@@ -29,7 +28,6 @@ import {
   MdLocalLaundryService,
   MdWifi,
   MdBeachAccess,
-  MdNaturePeople,
 } from "react-icons/md";
 
 const linksHeaderLanding = [
@@ -61,44 +59,60 @@ const linksHeaderDashboard = [
     href: "/dashboard",
     label: "Dashboard",
   },
-  {
-    icon: CiSettings,
-    href: "/settings",
-    label: "Configurações",
-  },
-  {
-    icon: CiCalendar,
-    href: "/settings",
-    label: "Calendario",
-  },
 ];
 
 const expenseCategories = [
-  { id: 1, value: "Alimentação", label: MdRestaurant },
-  { id: 2, value: "Transporte", label: MdDirectionsBus },
-  { id: 3, value: "Moradia", label: MdHome },
-  { id: 4, value: "Compras", label: MdShoppingCart },
-  { id: 5, value: "Educação", label: MdSchool },
-  { id: 6, value: "Academia", label: MdFitnessCenter },
-  { id: 7, value: "Saúde", label: MdLocalHospital },
-  { id: 8, value: "Finanças", label: MdAttachMoney },
-  { id: 9, value: "Entretenimento", label: MdMusicNote },
-  { id: 10, value: "Filmes", label: MdLocalMovies },
-  { id: 11, value: "Animais de Estimação", label: MdPets },
-  { id: 12, value: "Supermercado", label: MdLocalGroceryStore },
-  { id: 13, value: "Viagem", label: MdFlight },
-  { id: 14, value: "Carro", label: MdDirectionsCar },
-  { id: 15, value: "Esportes", label: MdSportsSoccer },
-  { id: 16, value: "Trabalho", label: MdWork },
-  { id: 17, value: "Tecnologia", label: MdLaptop },
-  { id: 18, value: "Livros", label: MdLibraryBooks },
-  { id: 19, value: "Café", label: MdLocalCafe },
-  { id: 20, value: "Eventos", label: MdEvent },
-  { id: 21, value: "Banheiro", label: MdWc },
-  { id: 22, value: "Lavanderia", label: MdLocalLaundryService },
-  { id: 23, value: "Internet", label: MdWifi },
-  { id: 24, value: "Praia", label: MdBeachAccess },
-  { id: 25, value: "Natureza", label: MdNaturePeople },
+  { value: "Alimentação", label: MdRestaurant },
+  { value: "Transporte", label: MdDirectionsBus },
+  { value: "Moradia", label: MdHome },
+  { value: "Compras", label: MdShoppingCart },
+  { value: "Educação", label: MdSchool },
+  { value: "Academia", label: MdFitnessCenter },
+  { value: "Saúde", label: MdLocalHospital },
+  { value: "Finanças", label: MdAttachMoney },
+  { value: "Entretenimento", label: MdMusicNote },
+  { value: "Filmes", label: MdLocalMovies },
+  { value: "Praia", label: MdBeachAccess },
+  { value: "Supermercado", label: MdLocalGroceryStore },
+  { value: "Viagem", label: MdFlight },
+  { value: "Carro", label: MdDirectionsCar },
+  { value: "Esportes", label: MdSportsSoccer },
+  { value: "Trabalho", label: MdWork },
+  { value: "Tecnologia", label: MdLaptop },
+  { value: "Livros", label: MdLibraryBooks },
+  { value: "Café", label: MdLocalCafe },
+  { value: "Eventos", label: MdEvent },
+  { value: "Banheiro", label: MdWc },
+  { value: "Lavanderia", label: MdLocalLaundryService },
+  { value: "Internet", label: MdWifi },
 ];
 
-export { linksHeaderLanding, expenseCategories, linksHeaderDashboard };
+const currencies = [
+  { name: "United States Dollar", code: "USD" },
+  { name: "Euro", code: "EUR" },
+  { name: "Japanese Yen", code: "JPY" },
+  { name: "British Pound Sterling", code: "GBP" },
+  { name: "Canadian Dollar", code: "CAD" },
+  { name: "Australian Dollar", code: "AUD" },
+  { name: "Swiss Franc", code: "CHF" },
+  { name: "Singapore Dollar", code: "SGD" },
+  { name: "Hong Kong Dollar", code: "HKD" },
+  { name: "Swedish Krona", code: "SEK" },
+  { name: "Norwegian Krone", code: "NOK" },
+  { name: "Danish Krone", code: "DKK" },
+  { name: "Polish Złoty", code: "PLN" },
+  { name: "Czech Koruna", code: "CZK" },
+  { name: "Mexican Peso", code: "MXN" },
+  { name: "Brazilian Real", code: "BRL" },
+  { name: "Indian Rupee", code: "INR" },
+  { name: "Chinese Yuan", code: "CNY" },
+  { name: "South Korean Won", code: "KRW" },
+  { name: "New Zealand Dollar", code: "NZD" },
+];
+
+export {
+  linksHeaderLanding,
+  expenseCategories,
+  linksHeaderDashboard,
+  currencies,
+};

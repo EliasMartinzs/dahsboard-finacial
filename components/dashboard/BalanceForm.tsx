@@ -19,6 +19,7 @@ import { useState, useTransition } from "react";
 import { AddAmountToBalance } from "@/actions/balance";
 
 import { IntlProvider } from "react-intl";
+import { formatCurrency } from "@/lib/utils";
 
 export function BalanceForm({ email }: { email: string }) {
   const [isPending, startTransition] = useTransition();
@@ -50,16 +51,6 @@ export function BalanceForm({ email }: { email: string }) {
         setFormattedBalance("");
       });
     });
-  }
-
-  function formatCurrency(value: string): string {
-    const numeralValue = parseFloat(value.replace(/[^\d]/g, ""));
-    const formattedValue = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-      minimumFractionDigits: 2,
-    }).format(numeralValue / 100); // Divida por 100 para ajustar o valor para o formato esperado
-    return isNaN(numeralValue) ? "" : formattedValue;
   }
 
   return (

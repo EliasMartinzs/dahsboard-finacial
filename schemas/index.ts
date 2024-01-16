@@ -52,3 +52,16 @@ export const BalanceSchema = z.object({
     message: "Por favor digitar um número",
   }),
 });
+
+export const ExpenseSchema = z.object({
+  description: z.string().min(1, {
+    message:
+      "Erro de entrada: A descrição fornecida é inválida ou está em branco. Por favor, insira uma descrição apropriada.",
+  }),
+  amount: z.string().min(1, {
+    message:
+      "Erro de entrada: A quantia inserida é inválida ou está ausente. Por favor, forneça uma quantia válida.",
+  }),
+  categoryName: z.string(),
+  currency: z.string(),
+});

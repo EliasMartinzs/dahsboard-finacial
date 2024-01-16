@@ -29,7 +29,7 @@ export const Responsive = ({ children }: useReponsiveProps) => {
       <Sheeet
         iconOpen={<IoCreateOutline className="w-7 h-7 cursor-pointer" />}
         side="bottom"
-        style="w-full flex-center flex-col"
+        style="w-full flex-center flex-col border-none"
       >
         {children}
       </Sheeet>

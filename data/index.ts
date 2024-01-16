@@ -35,3 +35,40 @@ export const getCreditCard = async (email: string) => {
     console.log("Error ao fetch cartao de credit", error);
   }
 };
+
+export const getExpensesByMonth = async (userId: string | undefined) => {
+  try {
+    const expensesMonth = await db.expense.groupBy({
+      by: ["date"],
+      _sum: {
+        amount: true,
+      },
+      where: { userId: userId },
+    });
+
+    return expensesMonth;
+  } catch (error: any) {
+    console.log("Falha ao fetch expense by month", error);
+    throw error;
+  }
+};
+
+export const getExpensesAllCategories = async (userId: string | undefined) => {
+  try {
+    const categories = await db.category.findMany({
+      where: {
+        expenses: {
+          some: {
+            userId: userId,
+          },
+        },
+      },
+      include: { expenses: true },
+    });
+
+    return categories;
+  } catch (error: any) {
+    console.log("Falha ao fetch expense by categories", error);
+    throw error;
+  }
+};

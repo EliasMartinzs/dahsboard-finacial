@@ -14,7 +14,7 @@ export function DeleteCreditCard({ id }: { id: number }) {
 
   return (
     <Button disabled={isPending} onClick={() => onClick(id)}>
-      Deletar hehe
+      Remover cartão
     </Button>
   );
 }

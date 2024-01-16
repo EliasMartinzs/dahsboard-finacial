@@ -41,7 +41,7 @@ export function CreditCardForm({ user }: UserPropsType) {
     <Form {...form}>
       <h2 className="font-semibold text-xl">Criar um novo cartão</h2>
       <form
-        className="space-y-5 w-full p-5"
+        className="space-y-5 w-full p-5 border-none"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <FormField
