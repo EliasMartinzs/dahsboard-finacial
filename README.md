@@ -3,6 +3,12 @@
 
 Este projeto é uma dashboard financeira simples construída com Next.js, Prisma ORM e NextAuth para autenticação. O projeto utiliza o banco de dados serverless da Neon.tech, é 100% responsivo e incorpora gráficos do Chart.js para uma representação visual dos gastos.
 
+Para utilizar o aplicativo, você tem a opção de fazer login utilizando sua conta do Google ou GitHub, ou criar uma nova conta. No entanto, estamos enfrentando problemas técnicos com a autenticação através do Google e GitHub, os quais estamos trabalhando para resolver o mais breve possível. Por enquanto, sugerimos que você crie uma nova conta ou utilize as credenciais temporárias abaixo para facilitar o acesso:
+
+- Login: teste@teste.com
+- Senha: 123456
+
+
 
 # Funcionalidades
 - Dashboard Financeira: Uma interface simples e intuitiva para visualizar informações financeiras.
